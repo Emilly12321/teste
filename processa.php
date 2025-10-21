@@ -28,6 +28,8 @@
 
         session_start();
 
+        // Inicializando nossa Session na primeira vez
+
         // Inicializa o array produtos na sessão
         if (!isset($_SESSION['produtos'])) {
             $_SESSION['produtos'] = [
@@ -35,37 +37,49 @@
                 "precos" => [],
                 "estoques" => []
             ];
+
+            // dentro de produtos há mais 3 arrays, como nomes , precos e estoques
         }
 
         // Função para excluir produto pelo índice
+
         function excluirProduto($indice)
-        {
+        {   
+            // verifica se existe um array de produtos com uma array de nomes e o seu indice
             if (isset($_SESSION['produtos']['nomes'][$indice])) {
-                // remover / cortar , um elemento a partir do indice 
+
+                // remover / cortar , um elemento a partir do indice, o 1 é de qtdade de cortes , ou seja, apenas o valor do indice que queremos.
                 array_splice($_SESSION['produtos']['nomes'], $indice, 1);
                 array_splice($_SESSION['produtos']['precos'], $indice, 1);
                 array_splice($_SESSION['produtos']['estoques'], $indice, 1);
                 return true;
             }
+
+            // se ele não conseguir remover / achar o item para remover ele irá retornar falso
             return false;
         }
 
         // Verifica se é POST para tratar dados
+
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-            $acao = $_POST['excluir'] ?? "";
+            // puxa o valor do nosso botão ao clicar 
+            $botao = $_POST['excluir'] ?? "";
 
-            if ($acao >= 0) {
+            if ($botao >= 0) {
                 // Excluir produto
-                if (excluirProduto($acao)) {
+                if (excluirProduto($botao)) {
                     echo "<p>Produto excluído com sucesso!</p>";
                 } else {
                     echo "<p>Erro: Produto não encontrado.</p>";
                 }
             } 
             else {
-
+                
+                // remove os espaços em branco ou transforma em string vazia se for nulo
                 $nome = trim($_POST["nome"]) ?? "";
+
+                //transforma em string vazia se for nulo
                 $preco = $_POST["preco"] ?? "";
                 $estoque = $_POST["estoque"] ?? "";
 
@@ -74,12 +88,15 @@
                     echo "<p>Preencha todos os campos corretamente!</p>";
                 } else {
                     
+                    // convertendo os valores para inteiro e real
                     $preco = (float)$preco;
                     $estoque = (int)$estoque;
 
                     if ($preco <= 0 || $estoque <= 0) {
                         echo "<p>Preço e estoque devem ser maiores que zero!</p>";
                     } else {
+                        
+                        //armazena os valores em cada array 
                         $_SESSION['produtos']['nomes'][] = $nome;
                         $_SESSION['produtos']['precos'][] = $preco;
                         $_SESSION['produtos']['estoques'][] = $estoque;
@@ -88,7 +105,7 @@
                 }
             }
 
-            // Exibe tabela com produtos e botão de excluir
+            // valida novamente caso a sessão tenha um valor vazio em nomes.
             if (!empty($_SESSION['produtos']['nomes'])) {
                 echo "<div class='container_resposta'>";
                 echo "<h2>📦 Estoque de Produtos</h2>";
@@ -100,9 +117,12 @@
                         <th>Ações</th>
                     </tr>";
 
+                    // laço de repetição que executa conforme o tamanho da array / session nomes
                 for ($i = 0; $i < count($_SESSION['produtos']['nomes']); $i++) {
                     echo "<tr>";
+                    // Mostra os valores de cada indice, por isso o [$i].
                     echo "<td>" . htmlspecialchars($_SESSION['produtos']['nomes'][$i]) . "</td>";
+                    // formata o valor para duas casas decimais.
                     echo "<td>" . number_format($_SESSION['produtos']['precos'][$i], 2, ',', '.') . "</td>";
                     echo "<td>" . $_SESSION['produtos']['estoques'][$i] . "</td>";
                     // Botão para excluir o produto
@@ -112,6 +132,7 @@
                         </form>
 
                     </td>";
+                    // aqui cada item recebe um botão e o mesmo recebe um valor de indice, ao clicar ele executa a função de excluir.
                     echo "</tr>";
                 }
                 echo "</table></div>";
