@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/styles.css">
+    <title>Cadastro de Produto - Supermercado</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <div>
+            <h1>Supermercado Tchê</h1>
+        </div>
+
+    </header>
+    <section>
+
+
+
+        <form method="POST" action="processa.php">
+            <h1>Cadastro de Estoque</h1>
+            <label for="nome">Nome do Produto:</label>
+            <input type="text" name="nome" id="nome" required>
+
+            <label for="preco">Preço (R$):</label>
+            <input type="number" name="preco" id="preco" step="0.01" required>
+
+            <label for="estoque">Quantidade em Estoque:</label>
+            <input type="number" name="estoque" id="estoque" required>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+
+
+
+    </section>
+
+</body>
+
+</html>
