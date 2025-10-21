@@ -97,33 +97,14 @@ button:hover {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    max-width: 800px;
+    width:100%;
     min-height: 100px;
-    padding: 15px;
-    background-color: #f7f7f7;
+    padding: 15px 50px;
+    margin-top: 25px;
+    background-color: #fcfcfc;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
-
-    a {
-        margin: 15px 0;
-        background-color: #1f7a1f;
-        color: white;
-        border: none;
-        padding: 15px 15px;
-        width: 100%;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        text-decoration: none;
-        text-align: center;
-    }
-
-    a:hover {
-
-        background-color: #166416;
-
-    }
 
 
 }
@@ -131,7 +112,7 @@ button:hover {
 table {
     margin-top: 30px;
     border-collapse: collapse;
-    width: 400px;
+    width: 350px;
     background: #fff;
 }
 
