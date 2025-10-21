@@ -4,28 +4,6 @@
     box-sizing: border-box;
 }
 
-header {
-    width: 100%;
-    height: 80px;
-    position: fixed;
-    background-color: #166416;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    div {
-        h1 {
-            font-size: 40px;
-            text-align: center;
-            margin: 0;
-            color: #ffffff;
-
-        }
-
-    }
-}
-
-
 section {
     width: 100%;
     height: 100vh;
@@ -47,18 +25,19 @@ h2 {
     text-align: center;
 }
 
-form {
+.formulario {
     background: #fff;
     padding: 35px 25px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 450px;
     min-height: 50px;
-
-    h1{
-        text-align: center;
-    }
 }
+
+/* Você tinha um h1 dentro do form com estilização - se quiser, pode descomentar */
+/* form h1 {
+    text-align: center;
+} */
 
 label {
     font-size: 20px;
@@ -85,45 +64,73 @@ button {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #166416;
 }
 
-
 .container_resposta {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width:100%;
-    min-height: 100px;
-    padding: 15px 50px;
-    margin-top: 25px;
+    max-width: 650px;
+    margin-top: 30px;
+    padding: 20px;
     background-color: #fcfcfc;
     border-radius: 12px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
-
-
 }
 
+.container_resposta h2 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Estilização da tabela */
 table {
     margin-top: 30px;
     border-collapse: collapse;
-    width: 350px;
+    width: 600px;
     background: #fff;
-}
-
-th,
-td {
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 th {
     background-color: #1f7a1f;
     color: white;
+    padding: 12px 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Estilização do botão dentro da tabela */
+td form {
+    margin: 0;
+}
+
+td form button {
+    background-color: #1f7a1f;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+td form button:hover {
+    background-color: #166416;
 }
