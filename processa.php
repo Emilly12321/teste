@@ -143,3 +143,22 @@
 </body>
 
 </html>
+
+
+
+/// Session ['produtos'] = [
+    
+        "nomes" =>      ['Maçã','Água'],
+        "preco" =>      ['1.50','5.00'],
+        "estoque" =>    ['4','2']
+    
+    ]
+
+    Ao mostrar ficaria :
+
+    Nome | Preco | Estoque |      Ação       | indice 
+
+    Maçã | 1.50  |   4     | Excluir (botão) | 0 
+    Água | 5.00  |   2     | Excluir (botão) | 1
+
+    Ao clicar em excluir,como o botão está recebendo o valor do indice, ele envia o mesmo para o servidor que executa a função de excluir a partir do indice. 
