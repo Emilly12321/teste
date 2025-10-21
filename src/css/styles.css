@@ -31,7 +31,7 @@ h2 {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 450px;
-    min-height: 50px;
+    min-height: 100px;
 }
 
 /* Você tinha um h1 dentro do form com estilização - se quiser, pode descomentar */
